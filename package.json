@@ -1,8 +1,14 @@
 {
   "name": "wheat-union",
+  "description": "A Code challenged proposed by Grape Alliance",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -10,8 +16,10 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "http-proxy-middleware": "^1.0.4",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },
@@ -19,10 +27,35 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "lint": "eslint --ext ts,tsx src --ignore-path .gitignore",
+    "lint:fix": "eslint --ext ts,tsx src --ignore-path .gitignore --fix",
+    "prettier": "prettier --write src"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.{test,spec,stories,example}.{js,jsx,ts,tsx}",
+      "!src/*.{js,jsx,ts,tsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 90,
+        "branches": 90,
+        "functions": 90,
+        "lines": 90
+      }
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "prettier": {
+    "printWidth": 100
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --stagged"
+    }
   },
   "browserslist": {
     "production": [
