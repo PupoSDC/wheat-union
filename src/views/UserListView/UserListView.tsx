@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { Divider, Fab, List } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
@@ -64,16 +64,14 @@ const UserListView: FunctionComponent<{}> = () => {
       <Divider />
       <List className={classes.list}>
         {visibleUsers.map((user) => (
-
-            <UserItem key={user.id} {...user} link={`${USERS_ROUTE}/${user.id}`} />
-
+          <UserItem key={user.id} {...user} link={`${USERS_ROUTE}/${user.id}`} />
         ))}
       </List>
-      <Link to={USERS_CREATE_ROUTE} >
+      <Link to={USERS_CREATE_ROUTE}>
         <Fab aria-label={"Add new user"} className={classes.fab}>
           <AddIcon />
         </Fab>
-       </Link>
+      </Link>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 import { Geo, Address, Company, NewUser } from "types/User";
-import { phoneRegExp, urlRegExp } from "consts/regex";
+import { urlRegExp } from "consts/regex";
 
 // TODO this one is unecessarely complicated since the type of
 // lat and lng is declared as string by the API. it should be
@@ -25,30 +25,36 @@ export const geoSchema: Yup.ObjectSchema<Geo> = Yup.object()
 
 export const addressSchema: Yup.ObjectSchema<Address> = Yup.object()
   .shape({
-    street: Yup.string().required(),
-    suite: Yup.string(),
-    city: Yup.string().required(),
-    zipcode: Yup.string(),
+    street: Yup.string().required().default(""),
+    suite: Yup.string().default(""),
+    city: Yup.string().required().default(""),
+    zipcode: Yup.string().default(""),
     geo: geoSchema.required(),
   })
   .required();
 
 export const companySchema: Yup.ObjectSchema<Company> = Yup.object()
   .shape({
-    name: Yup.string().min(2).required(),
+    name: Yup.string().min(2).required().default(""),
     catchPhrase: Yup.string().default(""),
     bs: Yup.string().default(""),
   })
   .required();
 
+// TODO phone validation via regex fails for demo data (?)
 export const userSchema: Yup.ObjectSchema<NewUser> = Yup.object()
   .shape({
-    name: Yup.string().min(2).required(),
-    username: Yup.string().min(3).max(18).required(),
-    email: Yup.string().email().required(),
+    name: Yup.string().min(2).required().default(""),
+    username: Yup.string().min(3).max(18).required().default(""),
+    email: Yup.string().email().required().default(""),
     address: addressSchema.required(),
-    phone: Yup.string().required(), // TODO phone validation via regex fails for demo data (?)
-    website: Yup.string().matches(urlRegExp, "Email is not valid"),
+    phone: Yup.string().required().default(""),
+    website: Yup.string()
+      .matches(urlRegExp, {
+        message: "website is not valid",
+        excludeEmptyString: true,
+      })
+      .default(""),
     company: companySchema.required(),
   })
   .required();

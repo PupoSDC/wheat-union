@@ -1,4 +1,5 @@
 export const USERS_API = "/api/users";
+export const REVERSE_LOCATION_API = "https://nominatim.openstreetmap.org/reverse";
 
 export const CREATE_ROUTE_APPENDIX = "create";
 
