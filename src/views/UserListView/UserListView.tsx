@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
+import {Link} from 'react-router-dom';
 import { Divider, Fab, List } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
@@ -6,7 +7,7 @@ import useAxios from "axios-hooks";
 import { User } from "types/User";
 import SearchBox from "components/SearchBox";
 import UserItem from "components/UserItem";
-import { USERS_API } from "consts/routes";
+import { USERS_API, USERS_CREATE_ROUTE, USERS_ROUTE } from "consts/routes";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,12 +64,16 @@ const UserListView: FunctionComponent<{}> = () => {
       <Divider />
       <List className={classes.list}>
         {visibleUsers.map((user) => (
-          <UserItem key={user.id} {...user} />
+
+            <UserItem key={user.id} {...user} link={`${USERS_ROUTE}/${user.id}`} />
+
         ))}
       </List>
-      <Fab aria-label={"Add new user"} className={classes.fab}>
-        <AddIcon />
-      </Fab>
+      <Link to={USERS_CREATE_ROUTE} >
+        <Fab aria-label={"Add new user"} className={classes.fab}>
+          <AddIcon />
+        </Fab>
+       </Link>
     </div>
   );
 };

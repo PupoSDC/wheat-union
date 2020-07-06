@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import {Link} from 'react-router-dom';
 import { ListItem, ListItemText, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { User } from "types/User";
@@ -12,16 +13,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserItem: FunctionComponent<User> = ({
+const UserItem: FunctionComponent<User & {link: string}> = ({
   username,
   email,
   name,
   id,
   company: { name: company },
+  link
 }) => {
   const classes = useStyles();
   return (
-    <ListItem button key={id} className={classes.listItem}>
+    <ListItem button component={Link} to={link} className={classes.listItem}>
       <ListItemText
         primary={username}
         secondary={
