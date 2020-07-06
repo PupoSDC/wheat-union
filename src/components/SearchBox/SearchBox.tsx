@@ -39,9 +39,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type SearchBoxProps = {
-  searchKey: string,
-  setSearchKey: (key: string) => void,
-}
+  searchKey: string;
+  setSearchKey: (key: string) => void;
+};
 
 const SearchBox: FunctionComponent<SearchBoxProps> = ({ searchKey, setSearchKey }) => {
   const classes = useStyles();

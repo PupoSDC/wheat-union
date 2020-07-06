@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useState } from "react";
-import { Divider, Fab, List, ListItem, ListItemText, Typography } from "@material-ui/core";
+import { Divider, Fab, List } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
 import useAxios from "axios-hooks";
 import { User } from "types/User";
-import SearchBox from 'components/SearchBox';
-import UserItem from 'components/UserItem';
+import SearchBox from "components/SearchBox";
+import UserItem from "components/UserItem";
 import { USERS_API } from "consts/routes";
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const UserListView: FunctionComponent<{}> = () => {
-  const [{ data: users = [], loading, error }] = useAxios<User[]>(USERS_API);
+  const [{ data: users = [], loading }] = useAxios<User[]>(USERS_API);
   const [searchKey, setSearchKey] = useState("");
   const classes = useStyles();
 
@@ -66,7 +66,7 @@ const UserListView: FunctionComponent<{}> = () => {
           <UserItem key={user.id} {...user} />
         ))}
       </List>
-      <Fab aria-label={"Add new user"} className={classes.fab} >
+      <Fab aria-label={"Add new user"} className={classes.fab}>
         <AddIcon />
       </Fab>
     </div>

@@ -4,7 +4,7 @@ import { shallow } from "enzyme";
 import { USERS_API } from "consts/routes";
 import axios from "axios";
 import MockAxios from "axios-mock-adapter";
-import users from 'mocks/users';
+import users from "mocks/users";
 
 jest.mock("react-router-dom", () => ({
   useParams: () => ({
