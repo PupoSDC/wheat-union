@@ -39,13 +39,16 @@ type GeoJsonAddress = {
 };
 
 // Cache the old location to avoid unecessary API calls
-let oldLocation : Geo;
+let oldLocation: Geo;
 
 const LocationField: FunctionComponent<LocationFieldProps> = ({
   field,
   form: { setFieldValue, values },
 }) => {
-  const [location, setLocation] = useState<Geo>();
+  const fieldValue = getIn(values, field.name);
+  const geoFieldValue = getIn(values, `${field.name}.geo`);
+
+  const [location, setLocation] = useState<Geo>(geoFieldValue);
   const [zoom, setZoom] = useState<number>(1);
   const mapRef = useRef<Map>(null);
   const classes = useStyles();
@@ -60,7 +63,6 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
     } as Geo);
   };
 
-  const fieldValue = getIn(values, field.name);
 
   useEffect(() => {
     const getLocation = async () => {
