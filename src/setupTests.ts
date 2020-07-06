@@ -5,5 +5,4 @@
 import "@testing-library/jest-dom/extend-expect";
 import { configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import { useTranslation } from "react-i18next";
 configure({ adapter: new Adapter() });

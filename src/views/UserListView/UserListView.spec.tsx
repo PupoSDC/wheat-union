@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "./Header";
+import UserListView from "./UserListView";
 import { shallow } from "enzyme";
 
-describe("Header", () => {
+describe("UserListView", () => {
   it("renders without crashing", () => {
-    shallow(<Header />);
+    shallow(<UserListView />);
   });
 });

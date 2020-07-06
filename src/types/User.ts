@@ -5,16 +5,16 @@ export type Geo = {
 
 export type Address = {
   street: string;
-  suite: string;
+  suite?: string;
   city: string;
-  zipcode: string;
+  zipcode?: string;
   geo: Geo;
 };
 
 export type Company = {
   name: string;
-  catchPhrase: string;
-  bs: string;
+  catchPhrase?: string;
+  bs?: string;
 };
 
 export type User = {
@@ -24,6 +24,8 @@ export type User = {
   email: string;
   address: Address;
   phone: string;
-  website: string;
+  website?: string;
   company: Company;
 };
+
+export type NewUser = Omit<User, "id">;
