@@ -52,17 +52,15 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
   const [zoom, setZoom] = useState<number>(1);
   const mapRef = useRef<Map>(null);
   const classes = useStyles();
-  const position: LatLngTuple = location
+  const position: LatLngTuple = (location?.lng && location?.lat)
     ? [Number(location.lat), Number(location.lng)]
     : dusseldorf;
   const handleClick = ({ latlng }: LeafletMouseEvent) => {
-    console.log(`${REVERSE_LOCATION_API}?lat=${latlng.lat}&long=${latlng.lng}`);
     setLocation({
       lat: `${latlng.lat}`,
       lng: `${latlng.lng}`,
     } as Geo);
   };
-
 
   useEffect(() => {
     const getLocation = async () => {

@@ -3,8 +3,9 @@ module.exports = function (app) {
   app.use(
     "/api",
     createProxyMiddleware({
-      target: "https://jsonplaceholder.typicode.com",
+      target: 'http://localhost:8080',
       changeOrigin: true,
+      secure: false,
       pathRewrite: { "^/api": "" },
     })
   );

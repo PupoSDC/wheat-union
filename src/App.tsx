@@ -9,6 +9,7 @@ import {
   USER_EDIT_ROUTE,
 } from "consts/routes";
 import Header from "components/Header";
+import LoadingSpinner from "components/LoadingSpinner";
 import theme from "utils/theme";
 
 const UserCreateView = lazy(() => import("views/UserCreateView"));
@@ -21,7 +22,7 @@ const Routes: FunctionComponent<{}> = () => {
   const isDesktop = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<LoadingSpinner />}>
       <BrowserRouter>
         <Switch>
           <Route component={UserCreateView} path={USERS_CREATE_ROUTE} />

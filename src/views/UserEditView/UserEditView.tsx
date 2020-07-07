@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import UserProfileForm from "components/UserProfileForm";
+import LoadingSpinner from "components/LoadingSpinner";
 import userSchema from "schemas/userSchema";
 import useAxios from "axios-hooks";
 import { USER_SLUG, USERS_API } from "consts/routes";
@@ -11,7 +12,7 @@ const UserCreateView: FunctionComponent<{}> = () => {
   const [{ data: user, loading }] = useAxios<User>(`${USERS_API}/${userId}`);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <LoadingSpinner />;
   }
 
   return (

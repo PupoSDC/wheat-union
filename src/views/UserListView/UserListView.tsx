@@ -7,6 +7,7 @@ import useAxios from "axios-hooks";
 import { User } from "types/User";
 import SearchBox from "components/SearchBox";
 import UserItem from "components/UserItem";
+import LoadingSpinner from "components/LoadingSpinner";
 import { USERS_API, USERS_CREATE_ROUTE, USERS_ROUTE } from "consts/routes";
 
 const useStyles = makeStyles((theme) => ({
@@ -53,7 +54,7 @@ const UserListView: FunctionComponent<{}> = () => {
     : users;
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <LoadingSpinner />;
   }
 
   return (

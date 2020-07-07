@@ -36,6 +36,7 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "http-proxy-middleware": "^1.0.4",
     "husky": "^4.2.5",
+    "json-server": "^0.16.1",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
     "react-scripts": "3.4.1",
@@ -43,6 +44,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:api": "json-server --watch jsonServer/db.json --port 8080 --delay 500",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "lint": "eslint --ext ts,tsx src --ignore-path .gitignore",
