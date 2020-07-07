@@ -7,8 +7,7 @@ import useAxios from "axios-hooks";
 import { User } from "types/User";
 import UserProfile from "components/UserProfile";
 import LoadingSpinner from "components/LoadingSpinner";
-import { USERS_API, USER_SLUG, USER_EDIT_ROUTE_GENERATOR } from "consts/routes";
-
+import { USERS_API, USER_SLUG, userRouteForUserId } from "consts/routes";
 
 const useStyles = makeStyles((theme) => ({
   fab: {
@@ -31,16 +30,17 @@ const UserView: FunctionComponent<{}> = () => {
     return <LoadingSpinner />;
   }
   return (
-    <UserProfile {...user} >
+    <UserProfile {...user}>
       <Fab
-      component={Link}
-      to={USER_EDIT_ROUTE_GENERATOR(userId)}
-      aria-label={"Add new user"}
-      className={classes.fab}>
+        component={Link}
+        to={userRouteForUserId(userId)}
+        aria-label={"Add new user"}
+        className={classes.fab}
+      >
         <EditIcon />
       </Fab>
     </UserProfile>
-    );
+  );
 };
 
 export default UserView;

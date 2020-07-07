@@ -8,7 +8,7 @@ import { User } from "types/User";
 import SearchBox from "components/SearchBox";
 import UserItem from "components/UserItem";
 import LoadingSpinner from "components/LoadingSpinner";
-import { USERS_API, USERS_CREATE_ROUTE, USERS_ROUTE } from "consts/routes";
+import { USERS_API, USERS_CREATE_ROUTE, userRouteForUserId } from "consts/routes";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -65,10 +65,15 @@ const UserListView: FunctionComponent<{}> = () => {
       <Divider />
       <List className={classes.list}>
         {visibleUsers.map((user) => (
-          <UserItem key={user.id} {...user} link={`${USERS_ROUTE}/${user.id}`} />
+          <UserItem key={user.id} {...user} link={userRouteForUserId(user.id)} />
         ))}
       </List>
-      <Fab component={Link} to={USERS_CREATE_ROUTE} aria-label={"Add new user"} className={classes.fab}>
+      <Fab
+        component={Link}
+        to={USERS_CREATE_ROUTE}
+        aria-label={"Add new user"}
+        className={classes.fab}
+      >
         <AddIcon />
       </Fab>
     </div>

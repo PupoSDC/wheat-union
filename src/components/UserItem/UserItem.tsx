@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
   block: {
     display: "block",
-  }
+  },
 }));
 
 const UserItem: FunctionComponent<User & { link: string }> = ({
@@ -31,10 +31,20 @@ const UserItem: FunctionComponent<User & { link: string }> = ({
         primary={username}
         secondary={
           <>
-            <Typography component="span" className={classes.block} variant="body2" color="textPrimary">
+            <Typography
+              component="span"
+              className={classes.block}
+              variant="body2"
+              color="textPrimary"
+            >
               {name}
             </Typography>
-            <Typography component="span" className={classes.block} variant="body2" color="textSecondary">
+            <Typography
+              component="span"
+              className={classes.block}
+              variant="body2"
+              color="textSecondary"
+            >
               {company}
             </Typography>
           </>
