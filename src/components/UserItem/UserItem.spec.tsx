@@ -5,6 +5,6 @@ import users from "mocks/users";
 
 describe("UserItem", () => {
   it("renders without crashing", () => {
-    shallow(<UserItem {...users[0]} />);
+    shallow(<UserItem {...users[0]} link="link" />);
   });
 });
