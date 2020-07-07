@@ -19,12 +19,13 @@ yarn run start
 
 ## Project decisions
 
-I decided to focus on providing you with a sample of my skills as a React developer as such, I have
-opted to completely mock the server of this application. I've focused a lot on providing an "almost"
-production ready feel to the application, including both a mobile friendly and a Desktop design.
+I decided to focus on providing you with a sample of my skills as a React developer. I've focused on
+providing an "almost" production ready feel to the application, including both a mobile friendly
+and a Desktop design.
 
-The above decision also means the application can only be enjoyed in development mode since there is
-no infrastructure to supply the production build API calls.
+Due to limited time I have opted to completely mock the server of this application. This decision
+also means the application can only be enjoyed in development mode since there is no infrastructure
+to supply the production build API calls.
 
 One the application requirements was the ability to filter through users. This is very conductive
 to a "table with filters" design which I particularly don't like. I opted to shift this concept and
@@ -33,11 +34,11 @@ functionality to filter through users. The implementation of this is rather naiv
 proof of concept of how to achieve the desired functionality with a more pleasent UX and
 significantly less code.
 
-For reference, the total amount of time spent on this project was around 14-16h.
+For reference, the total amount of time spent on this project was around 16-18h.
 
 ### What would the next steps be
 
-Al tough the application features some test cases, these are clearly insufficient. Most critically
+Altough the application features some test cases, these are clearly insufficient. Most critically
 the form section of the document needs to have several test cases written simulating different
 combinations of user input to make sure all of them are accepted or rejected accordingly.
 
@@ -50,7 +51,12 @@ this application in a docker image and deploy it somewhere.
 
 There is no fallback for missed API calls. If the API is down the user will simply not see anything.
 An error boundary should be designed and included in the application to show this kind of information
-to the user
+to the user.
+
+The maps component is very naivily implemented too. The container does not scale dynamically, and
+the 2 maps component share no implementation which is bad for mantainability. No tests were written
+for this component since mocking the API call to openstreetmaps would require a considerable time
+investment.
 
 ## Technical Decisions
 
@@ -136,6 +142,7 @@ For testing I'm using `Jest` together with `@testing-library` to collect a test 
 ```sh
 yarn test -- --coverage --watchAll=false
 ```
+
 ## What else to look for?
 
 The git history has been curated to make sure you can follow my development progress. Most of my
