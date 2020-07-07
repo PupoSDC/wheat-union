@@ -42,7 +42,6 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
   field,
   form: { setFieldValue, values, setFieldTouched },
 }) => {
-  const fieldValue = getIn(values, field.name);
   const geoFieldValue = getIn(values, `${field.name}.geo`);
 
   const [location, setLocation] = useState<Geo>(geoFieldValue);
@@ -97,7 +96,7 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
           setFieldTouched(`${field.name}.city`);
           setFieldTouched(`${field.name}.zipcode`);
         } catch (error) {
-          console.error("Failure retrieving data from address", address, fieldValue, error);
+          console.error("Failure retrieving data from address", address, error);
         }
       }
     };
