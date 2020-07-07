@@ -107,7 +107,7 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
       }
     };
     getLocation();
-  }, [location, field.name, fieldValue, setFieldValue]);
+  }, [location, field.name, fieldValue, setFieldValue, setFieldTouched]);
 
   return (
     <Map

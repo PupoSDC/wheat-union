@@ -23,6 +23,13 @@ production ready feel to the application, including both a mobile friendly and a
 The above decision also means the application can only be enjoyed in development mode since there is
 no infrastructure to supply the production build API calls.
 
+One the application requirements was the ability to filter through users. This is very conductive
+to a "table with filters" design which I particularly don't like. I opted to shift this concept and
+use a more modern approach of using a minimalist preview of user data, and an omnisearch
+functionality to filter through users. The implementation of this is rather naive, but serves as a
+proof of concept of how to achieve the desired functionality with a more pleasent UX and
+significantly less code.
+
 For reference, the total amount of time spent on this project was around 14-16h.
 
 ### What would the next steps be
@@ -37,6 +44,10 @@ user experience.
 
 Adding a simple node.js server instead of json server would allow us to be actually able to bundle
 this application in a docker image and deploy it somewhere.
+
+There is no fallback for missed API calls. If the API is down the user will simply not see anything.
+An error boundary should be designed and included in the application to show this kind of information
+to the user
 
 ## Technical Decisions
 
@@ -105,6 +116,16 @@ so I wanted to make sure they were always in Sync. For this reason I decided to 
 both the user location in the world, as well as a picker. This was implemented using `leaflet` and
 `openStreeMaps`. Leaflet is Open source, the OpenStreeMaps API however has a very limited rating
 which is not suited for production environments.
+
+## Code sturcture
+
+There are two main kinds of React Components in this application. `components` are components that
+are unaware of the application state. They are designed to be reusable, easily unit testable, and to
+be as much as possible unaware of business logic. `views` bring together multiple components and
+add business Logic, Api calls, etc.. to bring the application to life. In a `Redux` application,
+`views` would be the stage where you interact with your store, but given the simplicity of this app
+there is no such layer here.
+
 
 ## What else to look for?
 

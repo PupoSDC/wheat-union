@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, CircularProgressProps } from "@material-ui/core";
 import Logo from "components/Logo";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LoadingSpinner: FunctionComponent<CircularProgressProps> = (props) => {
+const LoadingSpinner: FunctionComponent<{}> = (props) => {
   const classes = useStyles();
   return <Logo className={classes.icon} />;
 };

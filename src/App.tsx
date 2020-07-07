@@ -13,6 +13,7 @@ import LoadingSpinner from "components/LoadingSpinner";
 import theme from "utils/theme";
 import LandingPageView from "views/LandingPageView";
 
+const DesktopUserView = lazy(() => import("views/DesktopUserView"));
 const UserCreateView = lazy(() => import("views/UserCreateView"));
 const UserEditView = lazy(() => import("views/UserEditView"));
 const UserView = lazy(() => import("views/UserView"));
@@ -34,6 +35,7 @@ const Routes: FunctionComponent<{}> = () => {
       <BrowserRouter>
         <Header mainRoute={ROOT_ROUTE} options={options} />
         <Switch>
+          {isDesktop && <Route component={DesktopUserView} path={USERS_ROUTE} />}
           <Route component={UserCreateView} path={USERS_CREATE_ROUTE} />
           <Route component={UserEditView} path={USER_EDIT_ROUTE} />
           <Route component={UserView} path={USER_VIEW_ROUTE} />

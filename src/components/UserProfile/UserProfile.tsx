@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: 330 * 2 + 65,
     },
   },
-  card: {
+  cardContent: {
     width: "305px",
     [theme.breakpoints.up("sm")]: {
       width: "350px",
@@ -83,7 +83,7 @@ const UserProfile: FunctionComponent<User> = ({
   return (
     <>
       <Card className={classes.root}>
-        <CardContent className={classes.card}>
+        <CardContent className={classes.cardContent}>
           <Typography component="h5" variant="h5">
             {name}
           </Typography>
@@ -105,7 +105,7 @@ const UserProfile: FunctionComponent<User> = ({
           </List>
         </CardContent>
 
-        <CardContent className={classes.card}>
+        <CardContent className={classes.cardContent}>
           <Map center={position} zoom={13} className={classes.map}>
             <TileLayer
               attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -116,7 +116,9 @@ const UserProfile: FunctionComponent<User> = ({
             </Marker>
           </Map>
         </CardContent>
-        {children}
+        <CardContent>
+          {children}
+        </CardContent>
       </Card>
     </>
   );

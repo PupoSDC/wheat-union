@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Button, Icon, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
 import Logo from "components/Logo";
 import { APP_NAME } from "consts/generic";
 
