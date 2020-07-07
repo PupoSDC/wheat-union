@@ -1,5 +1,5 @@
-import React, {FunctionComponent} from 'react';
-import {Box, CircularProgress, CircularProgressProps} from '@material-ui/core';
+import React, { FunctionComponent } from "react";
+import { Box, CircularProgress, CircularProgressProps } from "@material-ui/core";
 
 /**
  * Wraps the material-ui Circular progress in a div that fills all available space.
@@ -8,7 +8,7 @@ import {Box, CircularProgress, CircularProgressProps} from '@material-ui/core';
  * https://material-ui.com/api/circular-progress/#circularprogress-api
  */
 const LoadingSpinner: FunctionComponent<CircularProgressProps> = (props) => (
-  <Box height='100%' marginTop="50%" textAlign='center' width="100%">
+  <Box height="100%" marginTop="50%" textAlign="center" width="100%">
     <CircularProgress {...props} />
   </Box>
 );

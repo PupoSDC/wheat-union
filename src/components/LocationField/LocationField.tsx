@@ -43,7 +43,7 @@ let oldLocation: Geo;
 
 const LocationField: FunctionComponent<LocationFieldProps> = ({
   field,
-  form: { setFieldValue, values },
+  form: { setFieldValue, values, setFieldTouched },
 }) => {
   const fieldValue = getIn(values, field.name);
   const geoFieldValue = getIn(values, `${field.name}.geo`);
@@ -52,9 +52,8 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
   const [zoom, setZoom] = useState<number>(1);
   const mapRef = useRef<Map>(null);
   const classes = useStyles();
-  const position: LatLngTuple = (location?.lng && location?.lat)
-    ? [Number(location.lat), Number(location.lng)]
-    : dusseldorf;
+  const position: LatLngTuple =
+    location?.lng && location?.lat ? [Number(location.lat), Number(location.lng)] : dusseldorf;
   const handleClick = ({ latlng }: LeafletMouseEvent) => {
     setLocation({
       lat: `${latlng.lat}`,
@@ -82,7 +81,7 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
               lon: location.lng,
             },
           });
-          if (!features.length || !features[0].properties || !features[0].properties.address) {
+          if (!features?.length || !features[0].properties || !features[0].properties.address) {
             throw new Error("Invalid features");
           }
           address = features[0].properties.address;
@@ -98,6 +97,10 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
             zipcode: address.postcode,
             geo: location,
           } as Address);
+          setFieldTouched(`${field.name}.street`);
+          setFieldTouched(`${field.name}.suite`);
+          setFieldTouched(`${field.name}.city`);
+          setFieldTouched(`${field.name}.zipcode`);
         } catch (error) {
           console.error("Failure retrieving data from address", address, fieldValue, error);
         }
