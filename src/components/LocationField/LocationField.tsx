@@ -83,7 +83,7 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
         } catch (error) {
           console.error("Failure to retrieve geographical data", location, error);
         }
-        try {
+        if (address?.road && address?.city) {
           setFieldValue(field.name, {
             street: address.road || "",
             suite: address.suburb || "",
@@ -95,8 +95,6 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
           setFieldTouched(`${field.name}.suite`);
           setFieldTouched(`${field.name}.city`);
           setFieldTouched(`${field.name}.zipcode`);
-        } catch (error) {
-          console.error("Failure retrieving data from address", address, error);
         }
       }
     };

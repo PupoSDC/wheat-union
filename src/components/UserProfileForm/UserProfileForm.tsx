@@ -42,10 +42,8 @@ const UserProfileForm: FunctionComponent<userProfileFormProps> = ({
   };
 
   const onSubmit = (values: NewUser, { setSubmitting }: FormikHelpers<NewUser>) => {
-    setTimeout(() => {
-      setSubmitting(false);
-      onCompleted(values);
-    }, 500);
+    setSubmitting(false);
+    onCompleted(values);
   };
 
   return (
