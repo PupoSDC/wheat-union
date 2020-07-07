@@ -11,6 +11,9 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.background.paper,
     },
   },
+  block: {
+    display: "block",
+  }
 }));
 
 const UserItem: FunctionComponent<User & { link: string }> = ({
@@ -28,10 +31,10 @@ const UserItem: FunctionComponent<User & { link: string }> = ({
         primary={username}
         secondary={
           <>
-            <Typography component="div" variant="body2" color="textPrimary">
+            <Typography component="span" className={classes.block} variant="body2" color="textPrimary">
               {name}
             </Typography>
-            <Typography component="div" variant="body2" color="textSecondary">
+            <Typography component="span" className={classes.block} variant="body2" color="textSecondary">
               {company}
             </Typography>
           </>

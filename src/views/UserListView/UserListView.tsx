@@ -68,11 +68,9 @@ const UserListView: FunctionComponent<{}> = () => {
           <UserItem key={user.id} {...user} link={`${USERS_ROUTE}/${user.id}`} />
         ))}
       </List>
-      <Link to={USERS_CREATE_ROUTE}>
-        <Fab aria-label={"Add new user"} className={classes.fab}>
-          <AddIcon />
-        </Fab>
-      </Link>
+      <Fab component={Link} to={USERS_CREATE_ROUTE} aria-label={"Add new user"} className={classes.fab}>
+        <AddIcon />
+      </Fab>
     </div>
   );
 };

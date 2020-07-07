@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
     margin: "auto",
     display: "flex",
+    position: "relative",
     justifyContent: "space-around",
     flexWrap: "wrap",
     width: "100%",
@@ -86,6 +87,7 @@ const UserProfile: FunctionComponent<User> = ({
   website,
   company,
   address,
+  children,
 }) => {
   const classes = useStyles();
   const prettyAdress = `${address.street} ${address.suite || ""}, ${address.zipcode || ""} ${
@@ -130,6 +132,7 @@ const UserProfile: FunctionComponent<User> = ({
             </Marker>
           </Map>
         </CardContent>
+        {children}
       </Card>
     </>
   );
