@@ -7,17 +7,23 @@ import useAxios from "axios-hooks";
 import { User } from "types/User";
 import UserProfile from "components/UserProfile";
 import LoadingSpinner from "components/LoadingSpinner";
-import { USERS_API, USER_SLUG, userRouteForUserId } from "consts/routes";
+import { USERS_API, USER_SLUG, userEditRouteForUserId } from "consts/routes";
 
 const useStyles = makeStyles((theme) => ({
   fab: {
     position: "absolute",
-    bottom: theme.spacing(2),
-    left: theme.spacing(2),
+    top: theme.spacing(2),
+    right: theme.spacing(2),
     color: theme.palette.common.white,
     backgroundColor: theme.palette.secondary.main,
     "&:hover": {
       backgroundColor: theme.palette.secondary.dark,
+    },
+    [theme.breakpoints.up("sm")]: {
+      top: "initial",
+      right: "initial",
+      bottom: theme.spacing(2),
+      left: theme.spacing(2),
     },
   },
 }));
@@ -33,7 +39,7 @@ const UserView: FunctionComponent<{}> = () => {
     <UserProfile {...user}>
       <Fab
         component={Link}
-        to={userRouteForUserId(userId)}
+        to={userEditRouteForUserId(userId)}
         aria-label={"Add new user"}
         className={classes.fab}
       >

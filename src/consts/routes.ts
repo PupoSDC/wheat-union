@@ -10,7 +10,8 @@ export const ROOT_ROUTE = "/";
 export const USERS_ROUTE = "/users";
 export const USERS_CREATE_ROUTE = `${USERS_ROUTE}/${CREATE_ROUTE_APPENDIX}`;
 export const USER_VIEW_ROUTE = `${USERS_ROUTE}/:${USER_SLUG}`;
-export const USER_EDIT_ROUTE =`${USERS_ROUTE}/:${USER_SLUG}/${EDIT_ROUTE_APPENDIX}`;
+export const USER_EDIT_ROUTE = `${USERS_ROUTE}/:${USER_SLUG}/${EDIT_ROUTE_APPENDIX}`;
 
 export const userRouteForUserId = (userId: number | string) => `${USERS_ROUTE}/${userId}`;
+export const userEditRouteForUserId = (userId: number | string) => `${USERS_ROUTE}/${userId}/${EDIT_ROUTE_APPENDIX}`;
 export const userApiForUserId = (userId: number | string) => `${USERS_API}/${userId}`;

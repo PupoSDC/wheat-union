@@ -28,40 +28,24 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     width: "100%",
     overflow: "scroll",
-    [theme.breakpoints.down("xs")]: {
-      maxWidth: 280 + 65,
-    },
+    maxWidth: 280 + 65,
     [theme.breakpoints.up("sm")]: {
-      maxWidth: 320 * 2 + 65,
-    },
-    [theme.breakpoints.up("md")]: {
-      maxWidth: 480 * 2 + 65,
+      maxWidth: 330 * 2 + 65,
     },
   },
   card: {
-    [theme.breakpoints.down("xs")]: {
-      width: "305px",
-    },
+    width: "305px",
     [theme.breakpoints.up("sm")]: {
       width: "350px",
-    },
-    [theme.breakpoints.up("md")]: {
-      width: "510px",
     },
   },
   map: {
     margin: "auto",
-    [theme.breakpoints.down("xs")]: {
-      height: "280px",
-      width: "280px",
-    },
+    height: "280px",
+    width: "280px",
     [theme.breakpoints.up("sm")]: {
-      height: "320px",
-      width: "320px",
-    },
-    [theme.breakpoints.up("md")]: {
-      height: "480px",
-      width: "480px",
+      height: "310px",
+      width: "310px",
     },
   },
 }));
