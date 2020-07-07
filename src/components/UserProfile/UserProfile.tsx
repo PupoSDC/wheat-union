@@ -116,9 +116,7 @@ const UserProfile: FunctionComponent<User> = ({
             </Marker>
           </Map>
         </CardContent>
-        <CardContent>
-          {children}
-        </CardContent>
+        <CardContent>{children}</CardContent>
       </Card>
     </>
   );

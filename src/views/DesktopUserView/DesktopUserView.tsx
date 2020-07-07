@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import LoadingSpinner from "components/LoadingSpinner";
 import Logo from "components/Logo";
 import UserListView from "views/UserListView";
-import {USERS_CREATE_ROUTE, USER_VIEW_ROUTE, USER_EDIT_ROUTE} from "consts/routes";
+import { USERS_CREATE_ROUTE, USER_VIEW_ROUTE, USER_EDIT_ROUTE } from "consts/routes";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     "overflow-y": "auto",
     height: "100%",
     backgroundColor: theme.palette.background.default,
-    position: "relative"
+    position: "relative",
   },
   mainSide: {
     display: "flex",
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     color: "rgba(0, 0, 0, 0.1)",
     margin: "auto",
     fontSize: 75,
-  }
+  },
 }));
 
 const UserCreateView = lazy(() => import("views/UserCreateView"));

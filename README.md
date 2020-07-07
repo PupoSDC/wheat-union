@@ -126,7 +126,6 @@ add business Logic, Api calls, etc.. to bring the application to life. In a `Red
 `views` would be the stage where you interact with your store, but given the simplicity of this app
 there is no such layer here.
 
-
 ## What else to look for?
 
 The git history has been curated to make sure you can follow my development progress. Most of my

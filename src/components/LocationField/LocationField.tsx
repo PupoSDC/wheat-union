@@ -38,9 +38,6 @@ type GeoJsonAddress = {
   postcode: string;
 };
 
-// Cache the old location to avoid unecessary API calls
-let oldLocation: Geo;
-
 const LocationField: FunctionComponent<LocationFieldProps> = ({
   field,
   form: { setFieldValue, values, setFieldTouched },
@@ -63,8 +60,7 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
 
   useEffect(() => {
     const getLocation = async () => {
-      if (location && location !== oldLocation) {
-        oldLocation = location;
+      if (location?.lat && location?.lat) {
         let address: GeoJsonAddress = {
           road: "",
           suburb: "",
@@ -90,11 +86,10 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
         }
         try {
           setFieldValue(field.name, {
-            ...fieldValue,
-            street: address.road,
-            suite: address.suburb,
-            city: address.city,
-            zipcode: address.postcode,
+            street: address.road || "",
+            suite: address.suburb || "",
+            city: address.city || "",
+            zipcode: address.postcode || "",
             geo: location,
           } as Address);
           setFieldTouched(`${field.name}.street`);
@@ -107,7 +102,7 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
       }
     };
     getLocation();
-  }, [location, field.name, fieldValue, setFieldValue, setFieldTouched]);
+  }, [location, field.name, setFieldValue, setFieldTouched]);
 
   return (
     <Map
@@ -122,7 +117,7 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {location && <Marker position={position} />}
+      {location?.lat && location?.lng && <Marker position={position} />}
     </Map>
   );
 };

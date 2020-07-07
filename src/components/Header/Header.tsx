@@ -33,17 +33,17 @@ const Header: FunctionComponent<HeaderProps> = ({ mainRoute, options = [] }) => 
     <>
       <AppBar position="fixed" color="secondary">
         <Toolbar>
-          <Link component={Button} to={mainRoute} color="inherit">
+          <Button component={Link} to={mainRoute} color="inherit">
             <Logo fontSize="large" color="inherit" />
             <Typography className={classes.title} variant="h6" noWrap>
               {APP_NAME}
             </Typography>
-          </Link>
+          </Button>
           <div className={classes.grow} />
           {options.map(({ to, name }) => (
-            <Link component={Button} key={to} to={to} color="inherit">
+            <Button component={Link} key={to} to={to} color="inherit">
               {name}
-            </Link>
+            </Button>
           ))}
         </Toolbar>
       </AppBar>

@@ -8,8 +8,6 @@ import UserProfile from "components/UserProfile";
 import LoadingSpinner from "components/LoadingSpinner";
 import { USERS_API, USER_SLUG, userEditRouteForUserId } from "consts/routes";
 
-
-
 const UserView: FunctionComponent<{}> = () => {
   const { [USER_SLUG]: userId } = useParams();
   const [{ data: user, loading }] = useAxios<User>(`${USERS_API}/${userId}`);
@@ -18,7 +16,8 @@ const UserView: FunctionComponent<{}> = () => {
   }
   return (
     <UserProfile {...user}>
-      <Button  component={Link}
+      <Button
+        component={Link}
         to={userEditRouteForUserId(userId)}
         aria-label={"Add new user"}
         color="secondary"
