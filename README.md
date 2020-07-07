@@ -9,10 +9,13 @@ A Code challenged proposed by [Grape Alliance](https://grapealliance.com/). Powe
 To get started:
 
 ```shell
-npm install
-npm run start:api
-npm run start
+yarn install
+yarn run start:api
+yarn run start
 ```
+
+**Note**: Yarn was used due to the issue described
+[here](https://github.com/testing-library/react-testing-library/issues/663).
 
 ## Project decisions
 
@@ -131,11 +134,8 @@ there is no such layer here.
 For testing I'm using `Jest` together with `@testing-library` to collect a test coverage run:
 
 ```sh
-npm test -- --coverage --watchAll=false
+yarn test -- --coverage --watchAll=false
 ```
-
-NOTE: Unfortuantely this is currently broken and I can't figure out why :(
-
 ## What else to look for?
 
 The git history has been curated to make sure you can follow my development progress. Most of my

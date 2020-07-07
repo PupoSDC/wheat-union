@@ -29,18 +29,21 @@ describe("DesktopUserView", () => {
     expect(wrapper.find(UserListView)).toHaveLength(1);
   });
 
-  it("renders UserCreateView", () => {
+  it("renders UserCreateView", async () => {
     const wrapper = wrapperFactory(USERS_CREATE_ROUTE);
+    await UserCreateViewLazy;
     expect(wrapper.find(Route).at(0).prop("component")).toEqual(UserCreateViewLazy);
   });
 
-  it("renders UserView", () => {
+  it("renders UserView", async () => {
     const wrapper = wrapperFactory(USER_VIEW_ROUTE);
+    await UserViewLazy;
     expect(wrapper.find(Route).at(0).prop("component")).toEqual(UserViewLazy);
   });
 
-  it("renders UserEditView", () => {
+  it("renders UserEditView", async () => {
     const wrapper = wrapperFactory(USER_EDIT_ROUTE);
+    await UserEditViewLazy;
     expect(wrapper.find(Route).at(0).prop("component")).toEqual(UserEditViewLazy);
   });
 });
