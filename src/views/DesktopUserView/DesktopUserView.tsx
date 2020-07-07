@@ -35,9 +35,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const UserCreateView = lazy(() => import("views/UserCreateView"));
-const UserEditView = lazy(() => import("views/UserEditView"));
-const UserView = lazy(() => import("views/UserView"));
+export const UserCreateViewLazy = lazy(() => import("views/UserCreateView"));
+export const UserEditViewLazy = lazy(() => import("views/UserEditView"));
+export const UserViewLazy = lazy(() => import("views/UserView"));
 
 const DesktopUserView: FunctionComponent<{}> = () => {
   const classes = useStyles();
@@ -49,9 +49,9 @@ const DesktopUserView: FunctionComponent<{}> = () => {
       <Grid className={classes.mainSide} item xl={10} xs={9}>
         <Suspense fallback={<LoadingSpinner />}>
           <Switch>
-            <Route component={UserCreateView} path={USERS_CREATE_ROUTE} />
-            <Route component={UserEditView} path={USER_EDIT_ROUTE} />
-            <Route component={UserView} path={USER_VIEW_ROUTE} />
+            <Route component={UserCreateViewLazy} path={USERS_CREATE_ROUTE} />
+            <Route component={UserEditViewLazy} path={USER_EDIT_ROUTE} />
+            <Route component={UserViewLazy} path={USER_VIEW_ROUTE} />
             <Route component={() => <Logo className={classes.icon} />} />
           </Switch>
         </Suspense>

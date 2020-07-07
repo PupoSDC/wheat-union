@@ -14,11 +14,11 @@ describe("Header", () => {
       {
         name: "someRoute",
         to: "route",
-      }
+      },
     ];
 
     const wrapper = shallow(<Header mainRoute="/" options={options} />);
     expect(wrapper.find(Button)).toHaveLength(2);
     expect(wrapper.find(Button).at(1).prop("to")).toEqual("route");
-  })
+  });
 });

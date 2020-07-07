@@ -11,8 +11,8 @@ describe("SearchBox", () => {
     const searchFunction = jest.fn();
     const changeEvent = {
       target: {
-        value: newSearchValue
-      }
+        value: newSearchValue,
+      },
     } as React.ChangeEvent<HTMLInputElement>;
 
     const wrapper = shallow(<SearchBox searchKey={searchValue} setSearchKey={searchFunction} />);
@@ -21,5 +21,4 @@ describe("SearchBox", () => {
     expect(input.props().value).toEqual(searchValue);
     expect(searchFunction).toHaveBeenCalledWith(newSearchValue);
   });
-
 });

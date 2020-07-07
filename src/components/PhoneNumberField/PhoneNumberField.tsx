@@ -26,8 +26,6 @@ export function fieldToPhoneNumberField({
   };
 }
 
-
-
 const PhoneNumberField: FunctionComponent<PhoneNumberFieldProps> = ({ children, ...props }) => (
   <MuiPhoneNumber {...fieldToPhoneNumberField(props)}>{children}</MuiPhoneNumber>
 );

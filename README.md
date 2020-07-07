@@ -134,6 +134,8 @@ For testing I'm using `Jest` together with `@testing-library` to collect a test 
 npm test -- --coverage --watchAll=false
 ```
 
+NOTE: Unfortuantely this is currently broken and I can't figure out why :(
+
 ## What else to look for?
 
 The git history has been curated to make sure you can follow my development progress. Most of my
