@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Button, Icon, Toolbar, Typography } from "@material-ui/core";
 import Logo from "components/Logo";
@@ -17,32 +17,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type HeaderMenuOption = {
-  to: string
-  name: string,
-}
+  to: string;
+  name: string;
+};
 
 type HeaderProps = {
-  mainRoute: string,
-  options?: HeaderMenuOption[]
-}
+  mainRoute: string;
+  options?: HeaderMenuOption[];
+};
 
-const Header: FunctionComponent<HeaderProps> = ({mainRoute, options = []}) => {
+const Header: FunctionComponent<HeaderProps> = ({ mainRoute, options = [] }) => {
   const classes = useStyles();
 
   return (
     <>
       <AppBar position="fixed" color="secondary">
         <Toolbar>
-          <Link component={Button} to={mainRoute} color="inherit" >
+          <Link component={Button} to={mainRoute} color="inherit">
             <Logo fontSize="large" color="inherit" />
             <Typography className={classes.title} variant="h6" noWrap>
               {APP_NAME}
             </Typography>
           </Link>
           <div className={classes.grow} />
-          {options.map(({to, name}) =>
-            <Link component={Button} key={to} to={to} color="inherit">{name}</Link>
-          )}
+          {options.map(({ to, name }) => (
+            <Link component={Button} key={to} to={to} color="inherit">
+              {name}
+            </Link>
+          ))}
         </Toolbar>
       </AppBar>
       <div className={classes.offset} />

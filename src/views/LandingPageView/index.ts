@@ -1,1 +1,1 @@
-export {default} from './LandingPageView';
+export { default } from "./LandingPageView";

@@ -26,7 +26,7 @@ const Routes: FunctionComponent<{}> = () => {
     {
       to: USERS_ROUTE,
       name: "users",
-    }
+    },
   ];
 
   return (
