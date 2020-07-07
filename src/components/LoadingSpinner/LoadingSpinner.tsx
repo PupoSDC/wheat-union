@@ -1,16 +1,34 @@
 import React, { FunctionComponent } from "react";
-import { Box, CircularProgress, CircularProgressProps } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { Box, CircularProgressProps } from "@material-ui/core";
+import Logo from 'components/Logo';
 
-/**
- * Wraps the material-ui Circular progress in a div that fills all available space.
- * Circular progress is then displayed centered both vertically and horizontally.
- *
- * https://material-ui.com/api/circular-progress/#circularprogress-api
- */
-const LoadingSpinner: FunctionComponent<CircularProgressProps> = (props) => (
-  <Box height="100%" marginTop="50%" textAlign="center" width="100%">
-    <CircularProgress {...props} />
-  </Box>
-);
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    color: "rgba(0, 0, 0, 0.33)",
+    animation: "$pulse 1.5s ease-in-out 0.5s infinite",
+    margin: "auto",
+    fontSize: 75,
+  },
+  "@keyframes pulse": {
+    "0%": {
+      transform: "scale(0.95)",
+      opacity: 1,
+    },
+    "70%": {
+      transform: "scale(1)",
+      opacity: 0.4,
+    },
+    "100%": {
+      transform: "scale(0.95)",
+      opacity: 1,
+    }
+  }
+}));
+
+const LoadingSpinner: FunctionComponent<CircularProgressProps> = (props) => {
+  const classes = useStyles();
+  return <Logo className={classes.icon} />;
+}
 
 export default LoadingSpinner;

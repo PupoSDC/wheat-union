@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("sm")]: {
       top: "initial",
       right: "initial",
-      bottom: theme.spacing(2),
+      bottom: theme.spacing(1),
       left: theme.spacing(2),
     },
   },
@@ -42,6 +42,7 @@ const UserView: FunctionComponent<{}> = () => {
         to={userEditRouteForUserId(userId)}
         aria-label={"Add new user"}
         className={classes.fab}
+        size="small"
       >
         <EditIcon />
       </Fab>
