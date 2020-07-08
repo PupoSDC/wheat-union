@@ -51,9 +51,6 @@
     "react-scripts": "3.4.0",
     "typescript": "~3.7.2"
   },
-  "resolutions": {
-    "jest": "25.1.0"
-  },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
