@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import useAxios from "axios-hooks";
 import { User } from "types/User";
 import LoadingSpinner from "components/LoadingSpinner";
-import { Typography } from "@material-ui/core";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLngTuple } from "leaflet";
 import { USERS_API, userRouteForUserId } from "consts/routes";
@@ -45,7 +44,7 @@ const LandingPageView: FunctionComponent<{}> = () => {
         />
         {users.map(({ name, id, address: { geo } }) => {
           return (
-            <Marker position={[Number(geo.lat), Number(geo.lng)]}>
+            <Marker position={[Number(geo.lat), Number(geo.lng)]} key={id}>
               <Popup>
                 <Link to={userRouteForUserId(id)}>{name}</Link>
               </Popup>

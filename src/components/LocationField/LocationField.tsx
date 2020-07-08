@@ -34,7 +34,7 @@ interface LocationFieldProps extends FieldProps {}
 type GeoJsonAddress = {
   road?: string;
   suburb?: string;
-  village?: string,
+  village?: string;
   city?: string;
   postcode?: string;
 };
@@ -84,7 +84,7 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
           setFieldValue(field.name, {
             street: address.road || "",
             suite: address.suburb || "",
-            city:  city || "",
+            city: city || "",
             zipcode: address.postcode || "",
             geo: location,
           } as Address);
