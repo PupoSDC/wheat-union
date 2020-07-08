@@ -32,10 +32,11 @@ interface LocationFieldProps extends FieldProps {}
 
 /** Type inferred from oepnstreemaps API **/
 type GeoJsonAddress = {
-  road: string;
-  suburb: string;
-  city: string;
-  postcode: string;
+  road?: string;
+  suburb?: string;
+  village?: string,
+  city?: string;
+  postcode?: string;
 };
 
 const LocationField: FunctionComponent<LocationFieldProps> = ({
@@ -60,12 +61,7 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
   useEffect(() => {
     const getLocation = async () => {
       if (location?.lat && location?.lat) {
-        let address: GeoJsonAddress = {
-          road: "",
-          suburb: "",
-          city: "",
-          postcode: "",
-        };
+        let address: GeoJsonAddress = {};
         try {
           const {
             data: { features },
@@ -83,11 +79,12 @@ const LocationField: FunctionComponent<LocationFieldProps> = ({
         } catch (error) {
           console.error("Failure to retrieve geographical data", location, error);
         }
-        if (address?.road && address?.city) {
+        const city = address.city || address.village || address.suburb;
+        if (address.road && city) {
           setFieldValue(field.name, {
             street: address.road || "",
             suite: address.suburb || "",
-            city: address.city || "",
+            city:  city || "",
             zipcode: address.postcode || "",
             geo: location,
           } as Address);

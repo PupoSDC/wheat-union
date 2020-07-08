@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useAxios from "axios-hooks";
 import { User } from "types/User";
 import LoadingSpinner from "components/LoadingSpinner";
-import {Typography} from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLngTuple } from "leaflet";
 import { USERS_API, userRouteForUserId } from "consts/routes";
@@ -43,10 +43,12 @@ const LandingPageView: FunctionComponent<{}> = () => {
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {users.map(({ name, id,  address: {geo} }) => {
+        {users.map(({ name, id, address: { geo } }) => {
           return (
             <Marker position={[Number(geo.lat), Number(geo.lng)]}>
-              <Popup><Link to={userRouteForUserId(id)}>{name}</Link></Popup>
+              <Popup>
+                <Link to={userRouteForUserId(id)}>{name}</Link>
+              </Popup>
             </Marker>
           );
         })}
